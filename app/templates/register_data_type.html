@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Register</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/frame.css" />
+    <script src="/static/js/jquery.1.9.1.min.js" type="text/javascript"></script>
+    <script src="/static/js/registerdatatype.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Register Data Type</h1>
+        <p>
+            Title:<br>
+            <input id="title" name="title" size="70" type="text"><br>
+        </p>
+        <p>
+            Attributes:<br>
+        </p>
+        <p id="attr_1">
+            Name:
+            <input id="name_1" type="text" size="60">
+            <select id="basic_type_1">
+            </select><br>
+        </p>
+        <p>
+            <button id="add_attr" onclick="add_attr()">Add Attribute</button>
+            <button id="delete_attr" onclick="del_attr()">Del Attribute</button>
+        </p>
+        <p><button id="submit" onclick="register_data_type()">Submit</button></p>
+    </div>
+    <script type="text/javascript">
+        init_basic_types();
+    </script>
+</body>
+</html>

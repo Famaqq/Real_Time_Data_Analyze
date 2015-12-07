@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Register</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/frame.css" />
+    <script src="/static/js/jquery.1.9.1.min.js" type="text/javascript"></script>
+    <script src="/static/js/registertask.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Register Task</h1>
+        <p>
+            Task Title:
+            <input id="title" name="title" size="80" type="text"><br>
+        </p>
+        <p>
+            Input Data Type ID:
+            <select id="input_data_type_id" onchange="on_data_type_select()">
+            </select><br>
+            Desc:<br>
+            <textarea id="data_type_desc" rows="5" cols="90" readonly="readonly"></textarea>
+        </p>
+        <p>
+            Time Range:
+            <input id="time_range" name="time_range" size="5" type="number">
+            <select id="time_range_pst">
+                <option value="s">second(s)</option>
+                <option value="m">minute(s)</option>
+                <option value="h">hour(s)</option>
+                <option value="d">day(s)</option>
+            </select>
+        </p>
+        <p id="function_1">
+            Function 1:<br>
+            <textarea id="function_desc_1" name="function_desc_1" rows="10" cols="90"></textarea>
+        </p>
+        <p>
+            <button id="add_function" onclick="add_function()">Add Function</button>
+            <button id="delete_function" onclick="del_function()">Del Function</button>
+        </p>
+        <p><button id="submit" onclick="register_task()">Submit</button></p>
+    </div>
+    <script type="text/javascript">
+        init_data_types();
+    </script>
+</body>
+</html>

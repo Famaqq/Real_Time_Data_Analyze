@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Type List</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/datatype.css" />
+</head>
+<body>
+    <div id="wrapper">
+        <div id="data_type_list" class="list">
+            <div id="data_type_list_title" class="title">
+                <p style="margin:0px">Data Type ID</p>
+            </div>
+            {% for id in data_types %}
+                <div class="list_item">
+                    <a id="data_type_{{id}}" style="cursor:pointer;color:#000000" href="/datatype.html?selected={{id}}">[{{id}}]{{data_types[id].title}}</a>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div id="data_type_desc" class="list">
+            <div id="data_type_desc_title" class="title">
+                <p style="margin:0px">Description</p>
+            </div>
+            {% if selected %}
+            {% for attr in data_types[selected].attrs %}
+            <div class="list_item">
+                <a style="color:#000000">"{{attr}}" : {{data_types[selected].attrs[attr]}}</a>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    <script type="text/javascript" >
+        document.getElementById('data_type_' + {{selected}}).style.color = '#0000FF'
+    </script>
+</body>
+</html>

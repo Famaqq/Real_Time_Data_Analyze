@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Real Time Data Analyse</title>
+    <script src="/static/js/jquery.1.9.1.min.js" type="text/javascript"></script>
+    <script src="/static/js/highcharts.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/frame.css" />
+</head>
+<body>
+    <div id="wrapper">
+        <div id="task_list" class="list">
+            <div id="task_list_title" class="title">
+                <p style="margin:0px">Task List</p>
+            </div>
+            {% for id in tasks %}
+                <div class="list_item">
+                    <a id="task_{{id}}" style="cursor:pointer;color:#000000" href="/task.html?selected_task={{id}}">{{tasks[id].title}}</a>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div id="function_list" class="list">
+            <div id="function_list_title" class="title">
+                <p style="margin:0px">Function List</p>
+            </div>
+            {% if selected_task %}
+            {% for function in tasks[selected_task].functions %}
+            <div class="list_item">
+                <a id="function_{{loop.index}}" style="cursor:pointer;color:#000000" href="/task.html?selected_task={{selected_task}}&selected_function={{loop.index}}">{{function.name}}</a>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        <div id="function_desc" style="float:left;width:600px;height:80px;margin:10px;background:#F2F2F2">
+            <div id="function_desc_title" class="title">
+                Function Description
+            </div>
+            <div id="function_detail" style="margin-left:10px;margin-top:5px">
+                {% if selected_task %}
+                <span>
+                    {{tasks[selected_task].functions[selected_function - 1]}}
+                </span>
+                {% endif %}
+            </div>
+        </div>
+
+        <div id="chart" style="float:left;width:600px;height:500px;margin:10px"></div>
+    </div>
+
+    <script type="text/javascript" >
+        if ({{selected_task}}) {
+            document.getElementById('task_' + {{selected_task}}).style.color = '#0000FF'
+            document.getElementById('function_' + {{selected_function}}).style.color = '#0000FF'
+        }
+
+        $(document).ready(function() {
+	        $("#{{chart.chart.renderTo}}").highcharts({
+		        chart: {{chart.chart|safe}},
+		        title: {{chart.title|safe}},
+		        subtitle: {{chart.subtitle|safe}},
+		        xAxis: {{chart.xAxis|safe}},
+		        yAxis: {{chart.yAxis|safe}},
+		        series: {{chart.series|safe}}
+	        });
+        });
+
+    </script>
+
+</body>
+</html>

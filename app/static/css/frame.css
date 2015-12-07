@@ -1,0 +1,30 @@
+body {
+    background: #f9f9f9;
+}
+
+#wrapper {
+    width:1060px;
+    height:100%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.list {
+    float:left;
+    width:200px;
+    height:600px;
+    margin:10px;
+    background: #ebebeb;
+}
+
+.title {
+    background: #afafaf;
+    text-align:center;
+    padding:10px;
+}
+
+.list_item {
+    height:20px;
+    margin-top:5px;
+    margin-left:10px;
+}
